@@ -1,6 +1,71 @@
-# Strona portfolio — Aleksander Młynarski
+# Portfolio — Aleksander Młynarski
 
-Statyczna strona osobista gotowa do wdrożenia na własną domenę (GitHub Pages, Netlify, Cloudflare Pages itd.).
+Strona: **https://aleksander-mlynarski.github.io/portfolio-site/**
+
+---
+
+## Struktura plików
+
+```
+website/
+├── index.html
+├── css/styles.css
+├── js/
+│   ├── main.js       # galeria, menu, scroll
+│   └── i18n.js       # tłumaczenia PL/EN
+└── assets/
+    ├── docs/         # CV, certyfikaty, PDF-y projektów
+    └── gallery/      # zdjęcia do galerii
+```
+
+---
+
+## Galeria — Twoje zdjęcia (hobby, sport, życie)
+
+Galeria to **Twoje prywatne zdjęcia** — nie projekty z uczelni (chwytak i inne są w sekcji Projekty).
+
+### 1. Wrzuć pliki
+
+Skopiuj zdjęcia do folderu:
+
+```
+website/assets/gallery/
+```
+
+Np. `plywanie.jpg`, `gitara.jpg`, `wycieczka.jpg`. Format: **JPG** lub **PNG**.
+
+### 2. Wpisz je w `js/main.js`
+
+Otwórz plik i znajdź tablicę `galleryImages` (ok. linia 73). Zamień pustą tablicę na swoje zdjęcia:
+
+```javascript
+const galleryImages = [
+  { src: "assets/gallery/plywanie.jpg", caption: "Basen po treningu" },
+  { src: "assets/gallery/gitara.jpg", caption: "Gitara" },
+  { src: "assets/gallery/wycieczka.jpg", caption: "Wycieczka w góry" },
+];
+```
+
+`caption` to podpis pod zdjęciem (po polsku). Po przełączeniu na EN podpis zostaje ten sam — jeśli chcesz tłumaczenie, użyj `captionKey` zamiast `caption` (wpis w `js/i18n.js`).
+
+### 3. Wgraj na GitHub
+
+Dodaj nowe pliki do repo i zrób commit + push. Strona odświeży się po ok. 1 minucie.
+
+> Dopóki `galleryImages` jest puste, na stronie widać placeholdery.
+
+---
+
+## Inne zmiany
+
+| Co | Gdzie |
+|----|--------|
+| Tekst „O mnie”, projekty | `index.html` + tłumaczenia w `js/i18n.js` |
+| CV po polsku / angielsku | `assets/docs/` — linki przełączają się z językiem |
+| Nowy projekt | Skopiuj blok `<article class="project-card">` w `index.html` |
+| Kolory, wygląd | `css/styles.css` |
+
+---
 
 ## Podgląd lokalny
 
@@ -9,47 +74,12 @@ cd website
 python -m http.server 8080
 ```
 
-Otwórz [http://localhost:8080](http://localhost:8080).
+Otwórz http://localhost:8080
 
-## Struktura
+---
 
-```
-website/
-├── index.html          # główna strona
-├── css/styles.css
-├── js/main.js          # menu mobilne, lightbox galerii
-└── assets/
-    ├── docs/           # CV, chwytak, certyfikaty (PDF)
-    └── gallery/        # tu wrzucaj zdjęcia z hobby
-```
+## Własna domena (opcjonalnie)
 
-## Co warto dostosować
+Strona działa za darmo na GitHub Pages — własna domena nie jest potrzebna.
 
-1. **Galeria** — wrzuć zdjęcia do `assets/gallery/` i dodaj wpisy w tablicy `galleryImages` w `js/main.js`:
-
-```javascript
-const galleryImages = [
-  { src: "assets/gallery/chwytak.jpg", caption: "Chwytak — montaż" },
-  { src: "assets/gallery/projekt.jpg", caption: "Opis zdjęcia" },
-];
-```
-
-2. **Język** — przełącznik PL/EN w górnym panelu; wybór zapisywany w przeglądarce. CV po angielsku: `assets/docs/CV_Aleksander_Mlynarski_eng.pdf`.
-
-## Wdrożenie na domenę
-
-### GitHub Pages
-
-1. Utwórz repozytorium np. `Aleksander-Mlynarski.github.io` (lub osobne repo `portfolio-site`).
-2. Wgraj zawartość folderu `website/` (nie cały katalog `portfolio` z laboratoriami).
-3. W Settings → Pages ustaw branch `main` i folder root.
-4. W DNS domeny ustaw rekordy:
-   - **A** lub **CNAME** wskazujące na GitHub Pages (patrz [dokumentacja GitHub](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)).
-
-### Netlify / Cloudflare Pages
-
-Przeciągnij folder `website` w panelu albo połącz repo — build command pusty, publish directory: `.`
-
-## Nowy projekt na stronie
-
-Skopiuj blok `<article class="project-card">` w sekcji `#projekty` i uzupełnij tytuł, opis oraz link do GitHub/PDF.
+Jeśli kiedyś kupisz domenę: **Settings → Pages → Custom domain**, potem rekord DNS u rejestratora (CNAME `www` → `aleksander-mlynarski.github.io` albo 4× rekord A na `@`). Szczegóły: [dokumentacja GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).

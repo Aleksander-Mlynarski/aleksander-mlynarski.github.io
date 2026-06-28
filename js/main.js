@@ -70,6 +70,8 @@
     });
   });
 
+  // Galeria — Twoje zdjęcia z hobby (assets/gallery/):
+  // { src: "assets/gallery/plywanie.jpg", caption: "Basen po treningu" },
   const galleryImages = [];
 
   const grid = document.getElementById("gallery-grid");

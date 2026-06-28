@@ -76,11 +76,11 @@ window.I18N = {
     "proj.tsp.lab": "Wariant lab.",
     "proj.github": "GitHub",
     "gallery.intro":
-      "Miejsce na zdjęcia z projektów, elektroniki i innych rzeczy, które robię poza uczelnią. Wrzuć pliki JPG/PNG do folderu <code>assets/gallery/</code> i zaktualizuj listę w <code>js/main.js</code>.",
-    "gallery.cap1": "Miejsce na zdjęcie projektu",
-    "gallery.cap2": "Elektronika / Arduino",
-    "gallery.cap3": "Majsterkowanie",
-    "gallery.cap4": "Chwytak / mechanika",
+      "Kilka zdjęć z życia — sport, gitara, wyjazdy i inne rzeczy, które robię poza uczelnią.",
+    "gallery.cap1": "Sport",
+    "gallery.cap2": "Gitara",
+    "gallery.cap3": "Wyjazd",
+    "gallery.cap4": "Hobby",
     "contact.lead":
       "Masz pytanie, propozycję współpracy albo chcesz pogadać o projekcie? Napisz — odpowiadam zwykle w ciągu kilku dni.",
     "contact.email": "E-mail",
@@ -163,11 +163,11 @@ window.I18N = {
     "proj.tsp.lab": "Lab variant",
     "proj.github": "GitHub",
     "gallery.intro":
-      "A place for photos from projects, electronics, and other things I do outside university. Drop JPG/PNG files into <code>assets/gallery/</code> and update the list in <code>js/main.js</code>.",
-    "gallery.cap1": "Project photo placeholder",
-    "gallery.cap2": "Electronics / Arduino",
-    "gallery.cap3": "DIY / making",
-    "gallery.cap4": "Gripper / mechanics",
+      "A few photos from life — sports, guitar, trips, and other things I do outside university.",
+    "gallery.cap1": "Sports",
+    "gallery.cap2": "Guitar",
+    "gallery.cap3": "Trip",
+    "gallery.cap4": "Hobby",
     "contact.lead":
       "Have a question, collaboration idea, or just want to chat about a project? Drop me a line — I usually reply within a few days.",
     "contact.email": "E-mail",
