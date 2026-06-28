@@ -36,17 +36,16 @@ Np. `plywanie.jpg`, `gitara.jpg`, `wycieczka.jpg`. Format: **JPG** lub **PNG**.
 
 ### 2. Wpisz je w `js/main.js`
 
-Otwórz plik i znajdź tablicę `galleryImages` (ok. linia 73). Zamień pustą tablicę na swoje zdjęcia:
+Tablica `galleryImages` — wystarczy sama ścieżka do pliku:
 
 ```javascript
 const galleryImages = [
-  { src: "assets/gallery/plywanie.jpg", caption: "Basen po treningu" },
-  { src: "assets/gallery/gitara.jpg", caption: "Gitara" },
-  { src: "assets/gallery/wycieczka.jpg", caption: "Wycieczka w góry" },
+  "assets/gallery/moje-zdjecie.jpg",
+  "assets/gallery/kolejne.jpg",
 ];
 ```
 
-`caption` to podpis pod zdjęciem (po polsku). Po przełączeniu na EN podpis zostaje ten sam — jeśli chcesz tłumaczenie, użyj `captionKey` zamiast `caption` (wpis w `js/i18n.js`).
+Podpisy nie są wymagane. Po kliknięciu zdjęcie powiększa się bez opisu.
 
 ### 3. Wgraj na GitHub
 

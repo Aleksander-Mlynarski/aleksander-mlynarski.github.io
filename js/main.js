@@ -70,27 +70,33 @@
     });
   });
 
-  // Galeria — Twoje zdjęcia z hobby (assets/gallery/):
-  // { src: "assets/gallery/plywanie.jpg", caption: "Basen po treningu" },
-  const galleryImages = [];
+  const galleryImages = [
+    "assets/gallery/gory2.jpeg",
+    "assets/gallery/gory3.jpeg",
+    "assets/gallery/gory4.JPG",
+    "assets/gallery/gory6.jpeg",
+    "assets/gallery/jezioro.JPEG",
+    "assets/gallery/kajaki.jpeg",
+    "assets/gallery/narty.jpeg",
+    "assets/gallery/na_aucie.JPEG",
+    "assets/gallery/ryba.jpeg",
+  ];
 
   const grid = document.getElementById("gallery-grid");
 
   if (galleryImages.length > 0) {
     grid.innerHTML = "";
-    galleryImages.forEach(({ src, captionKey, caption }) => {
+    galleryImages.forEach((entry) => {
+      const src = typeof entry === "string" ? entry : entry.src;
       const fig = document.createElement("figure");
       fig.className = "gallery-item";
-      fig.dataset.caption = caption || "";
-      if (captionKey) fig.dataset.i18nCaption = captionKey;
       const img = document.createElement("img");
       img.src = src;
-      img.alt = caption || "";
+      img.alt = "";
       img.loading = "lazy";
       fig.appendChild(img);
       grid.appendChild(fig);
     });
-    setLanguage(currentLang);
   }
 
   const lightbox = document.getElementById("lightbox");
@@ -98,10 +104,11 @@
   const lightboxCaption = document.getElementById("lightbox-caption");
   const closeBtn = lightbox.querySelector(".lightbox-close");
 
-  function openLightbox(src, caption) {
+  function openLightbox(src) {
     lightboxImg.src = src;
-    lightboxImg.alt = caption;
-    lightboxCaption.textContent = caption;
+    lightboxImg.alt = "";
+    lightboxCaption.textContent = "";
+    lightboxCaption.hidden = true;
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
   }
@@ -116,7 +123,7 @@
     const item = e.target.closest(".gallery-item");
     if (!item) return;
     const img = item.querySelector("img");
-    if (img) openLightbox(img.src, item.dataset.caption || img.alt);
+    if (img) openLightbox(img.src);
   });
 
   closeBtn.addEventListener("click", closeLightbox);
