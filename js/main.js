@@ -50,6 +50,7 @@
     btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
   });
 
+  if (window.renderSkillGroups) window.renderSkillGroups();
   setLanguage(currentLang);
 
   const yearEl = document.getElementById("year");
