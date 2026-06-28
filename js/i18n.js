@@ -76,9 +76,9 @@ window.I18N = {
     "proj.tsp.lab": "Wariant lab.",
     "proj.github": "GitHub",
     "gallery.intro":
-      "Kilka zdjęć z życia — sport, gitara, wyjazdy i inne rzeczy, które robię poza uczelnią.",
+      "Kilka zdjęć z życia — góry, woda, sport i wyjazdy.",
     "gallery.cap1": "Sport",
-    "gallery.cap2": "Gitara",
+    "gallery.cap2": "Woda",
     "gallery.cap3": "Wyjazd",
     "gallery.cap4": "Hobby",
     "contact.lead":
@@ -163,9 +163,9 @@ window.I18N = {
     "proj.tsp.lab": "Lab variant",
     "proj.github": "GitHub",
     "gallery.intro":
-      "A few photos from life — sports, guitar, trips, and other things I do outside university.",
+      "A few photos from life — mountains, water, sports, and trips.",
     "gallery.cap1": "Sports",
-    "gallery.cap2": "Guitar",
+    "gallery.cap2": "Water",
     "gallery.cap3": "Trip",
     "gallery.cap4": "Hobby",
     "contact.lead":
