@@ -5,7 +5,7 @@
   let currentLang = localStorage.getItem(STORAGE_KEY) || "pl";
 
   function setLanguage(lang) {
-    if (!window.I18N[lang]) return;
+    if (!window.I18N || !window.I18N[lang]) return;
     currentLang = lang;
     localStorage.setItem(STORAGE_KEY, lang);
 
@@ -52,86 +52,69 @@
 
   setLanguage(currentLang);
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   const toggle = document.querySelector(".nav-toggle");
   const navPanel = document.querySelector(".nav-panel");
 
-  toggle.addEventListener("click", () => {
-    const open = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!open));
-    navPanel.classList.toggle("open", !open);
-  });
-
-  navPanel.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      toggle.setAttribute("aria-expanded", "false");
-      navPanel.classList.remove("open");
+  if (toggle && navPanel) {
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!open));
+      navPanel.classList.toggle("open", !open);
     });
-  });
 
-  const galleryImages = [
-    "assets/gallery/gory2.jpeg",
-    "assets/gallery/gory3.jpeg",
-    "assets/gallery/gory4.JPG",
-    "assets/gallery/gory6.jpeg",
-    "assets/gallery/jezioro.JPEG",
-    "assets/gallery/kajaki.jpeg",
-    "assets/gallery/narty.jpeg",
-    "assets/gallery/na_aucie.JPEG",
-    "assets/gallery/ryba.jpeg",
-  ];
-
-  const grid = document.getElementById("gallery-grid");
-
-  if (galleryImages.length > 0) {
-    grid.innerHTML = "";
-    galleryImages.forEach((entry) => {
-      const src = typeof entry === "string" ? entry : entry.src;
-      const fig = document.createElement("figure");
-      fig.className = "gallery-item";
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = "";
-      img.loading = "lazy";
-      fig.appendChild(img);
-      grid.appendChild(fig);
+    navPanel.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        toggle.setAttribute("aria-expanded", "false");
+        navPanel.classList.remove("open");
+      });
     });
   }
 
+  const grid = document.getElementById("gallery-grid");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxCaption = document.getElementById("lightbox-caption");
-  const closeBtn = lightbox.querySelector(".lightbox-close");
+  const closeBtn = lightbox && lightbox.querySelector(".lightbox-close");
 
   function openLightbox(src) {
+    if (!lightbox || !lightboxImg) return;
     lightboxImg.src = src;
     lightboxImg.alt = "";
-    lightboxCaption.textContent = "";
-    lightboxCaption.hidden = true;
+    if (lightboxCaption) {
+      lightboxCaption.textContent = "";
+      lightboxCaption.hidden = true;
+    }
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
   }
 
   function closeLightbox() {
+    if (!lightbox || !lightboxImg) return;
     lightbox.hidden = true;
     lightboxImg.src = "";
     document.body.style.overflow = "";
   }
 
-  grid.addEventListener("click", (e) => {
-    const item = e.target.closest(".gallery-item");
-    if (!item) return;
-    const img = item.querySelector("img");
-    if (img) openLightbox(img.src);
-  });
+  if (grid) {
+    grid.addEventListener("click", (e) => {
+      const item = e.target.closest(".gallery-item");
+      if (!item) return;
+      const img = item.querySelector("img");
+      if (img) openLightbox(img.src);
+    });
+  }
 
-  closeBtn.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
+  if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+    if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
   });
 
   const header = document.querySelector(".header");
@@ -142,6 +125,7 @@
     .filter(Boolean);
 
   function onScroll() {
+    if (!header || !progress) return;
     const y = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (y / docHeight) * 100 : 0;
